@@ -10,7 +10,7 @@ def categorizar_transacao(descricao, valor):
     """
     Categoriza uma transação usando regras predefinidas.
     """
-    descricao_lower = descricao.lower()
+    descricao_lower = descricao.lower() if isinstance(descricao, str) else ""
     
     # Valores positivos são receitas
     if valor > 0:
@@ -43,3 +43,4 @@ def categorizar_transacoes(df):
     """
     df['Categoria'] = df.apply(lambda row: categorizar_transacao(row['Descricao'], row['Valor']), axis=1)
     return df
+
